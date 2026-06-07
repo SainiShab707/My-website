@@ -1,463 +1,89 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduEnglish | Class 10 English Hub</title>
-    <style>
-        /* Global Styles & Variables */
-        :root {
-            --primary: #4f46e5;
-            --primary-hover: #4338ca;
-            --secondary: #0ea5e9;
-            --dark: #1e293b;
-            --light: #f8fafc;
-            --text: #334155;
-            --white: #ffffff;
-            --shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        body {
-            background-color: var(--light);
-            color: var(--text);
-            line-height: 1.6;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--white);
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 2rem;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: var(--primary);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            color: var(--dark);
-            margin-bottom: 1rem;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            color: #64748b;
-            margin-bottom: 2rem;
-        }
-
-        .btn {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 0.75rem 1.5rem;
-            border-radius: 0.5rem;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s;
-        }
-
-        .btn:hover {
-            background-color: var(--primary-hover);
-        }
-
-        /* Main Layout Container */
-        .container {
-            max-width: 1200px;
-            margin: 3rem auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2rem;
-            color: var(--dark);
-            margin-bottom: 2rem;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 4px;
-            background-color: var(--secondary);
-            margin: 0.5rem auto 0;
-            border-radius: 2px;
-        }
-
-        /* Dashboard Grid */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-
-        .card {
-            background-color: var(--white);
-            border-radius: 0.75rem;
-            overflow: hidden;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .card-content {
-            padding: 1.5rem;
-        }
-
-        .card-tag {
-            display: inline-block;
-            padding: 0.25rem 0.5rem;
-            background-color: #e0f2fe;
-            color: var(--secondary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            border-radius: 0.25rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .card h3 {
-            color: var(--dark);
-            margin-bottom: 0.5rem;
-        }
-
-        .card p {
-            color: #64748b;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Interactive Study Section */
-        .study-box {
-            background-color: var(--white);
-            border-radius: 0.75rem;
-            box-shadow: var(--shadow);
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-
-        .tabs {
-            display: flex;
-            gap: 1rem;
-            border-bottom: 2px solid #e2e8f0;
-            margin-bottom: 1.5rem;
-        }
-
-        .tab-btn {
-            padding: 0.75rem 1.5rem;
-            border: none;
-            background: none;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #64748b;
-            cursor: pointer;
-            border-bottom: 2px solid transparent;
-            margin-bottom: -2px;
-        }
-
-        .tab-btn.active {
-            color: var(--primary);
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
-        }
-
-        .chapter-list, .grammar-list {
-            list-style: none;
-        }
-
-        .chapter-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem;
-            border-bottom: 1px solid #f1f5f9;
-        }
-
-        .chapter-item:last-child {
-            border-bottom: none;
-        }
-
-        /* Quiz Widget Style */
-        .quiz-container {
-            background-color: #f8fafc;
-            padding: 1.5rem;
-            border-radius: 0.5rem;
-            border-left: 4px solid var(--primary);
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 4rem;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none; /* Can be expanded with JS hamburger menu if needed */
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Psycho Tools</title>
+<style>
+body{margin:0;background:#05070d;color:#00ff9d;font-family:Arial,sans-serif}
+header{padding:25px;text-align:center;font-size:32px;font-weight:bold;
+background:linear-gradient(90deg,#00ff9d,#00c3ff);color:#000}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;padding:16px}
+.card{background:#0d1117;border:1px solid #00ff9d;border-radius:14px;padding:14px;
+box-shadow:0 0 12px rgba(0,255,157,.25)}
+.card:hover{transform:scale(1.03)}
+h3{margin:0 0 8px 0;font-size:16px}
+button{width:100%;padding:8px;border:none;border-radius:8px;background:#00ff9d;color:#000;font-weight:bold}
+</style>
 </head>
 <body>
+<header>PSYCHO TOOLS</header>
+<div class="grid">
+<div class="card"><h3>Password Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Hash Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Base64 Encode</h3><button>Open Tool</button></div>
+<div class="card"><h3>Base64 Decode</h3><button>Open Tool</button></div>
+<div class="card"><h3>URL Encoder</h3><button>Open Tool</button></div>
+<div class="card"><h3>URL Decoder</h3><button>Open Tool</button></div>
+<div class="card"><h3>JSON Formatter</h3><button>Open Tool</button></div>
+<div class="card"><h3>JSON Validator</h3><button>Open Tool</button></div>
+<div class="card"><h3>UUID Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>QR Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Barcode Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Color Picker</h3><button>Open Tool</button></div>
+<div class="card"><h3>HEX To RGB</h3><button>Open Tool</button></div>
+<div class="card"><h3>RGB To HEX</h3><button>Open Tool</button></div>
+<div class="card"><h3>Text Counter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Word Counter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Case Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>HTML Encoder</h3><button>Open Tool</button></div>
+<div class="card"><h3>HTML Decoder</h3><button>Open Tool</button></div>
+<div class="card"><h3>JWT Decoder</h3><button>Open Tool</button></div>
+<div class="card"><h3>Timestamp Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Unix Time</h3><button>Open Tool</button></div>
+<div class="card"><h3>Regex Tester</h3><button>Open Tool</button></div>
+<div class="card"><h3>Regex Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Markdown Preview</h3><button>Open Tool</button></div>
+<div class="card"><h3>Lorem Ipsum</h3><button>Open Tool</button></div>
+<div class="card"><h3>Gradient Maker</h3><button>Open Tool</button></div>
+<div class="card"><h3>CSS Minifier</h3><button>Open Tool</button></div>
+<div class="card"><h3>JS Minifier</h3><button>Open Tool</button></div>
+<div class="card"><h3>HTML Minifier</h3><button>Open Tool</button></div>
+<div class="card"><h3>Image Compressor</h3><button>Open Tool</button></div>
+<div class="card"><h3>Image Resizer</h3><button>Open Tool</button></div>
+<div class="card"><h3>PNG To JPG</h3><button>Open Tool</button></div>
+<div class="card"><h3>JPG To PNG</h3><button>Open Tool</button></div>
+<div class="card"><h3>PDF Merger</h3><button>Open Tool</button></div>
+<div class="card"><h3>PDF Splitter</h3><button>Open Tool</button></div>
+<div class="card"><h3>PDF To Image</h3><button>Open Tool</button></div>
+<div class="card"><h3>Image To PDF</h3><button>Open Tool</button></div>
+<div class="card"><h3>Age Calculator</h3><button>Open Tool</button></div>
+<div class="card"><h3>BMI Calculator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Percentage Calculator</h3><button>Open Tool</button></div>
+<div class="card"><h3>EMI Calculator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Scientific Calculator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Currency Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Unit Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Speed Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Temperature Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>IP Lookup</h3><button>Open Tool</button></div>
+<div class="card"><h3>DNS Lookup</h3><button>Open Tool</button></div>
+<div class="card"><h3>WHOIS Lookup</h3><button>Open Tool</button></div>
+<div class="card"><h3>Port Scanner</h3><button>Open Tool</button></div>
+<div class="card"><h3>Ping Tool</h3><button>Open Tool</button></div>
+<div class="card"><h3>User Agent Viewer</h3><button>Open Tool</button></div>
+<div class="card"><h3>Screen Resolution</h3><button>Open Tool</button></div>
+<div class="card"><h3>Random Number</h3><button>Open Tool</button></div>
+<div class="card"><h3>Random String</h3><button>Open Tool</button></div>
+<div class="card"><h3>Fake Data Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>ASCII Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Binary Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>Morse Converter</h3><button>Open Tool</button></div>
+<div class="card"><h3>SHA256 Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>MD5 Generator</h3><button>Open Tool</button></div>
+<div class="card"><h3>Text Encryptor</h3><button>Open Tool</button></div>
+<div class="card"><h3>Text Decryptor</h3><button>Open Tool</button></div>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-container">
-            <a href="#" class="logo">EduEnglish</a>
-            <ul class="nav-links">
-                <li><a href="#syllabus">Syllabus</a></li>
-                <li><a href="#literature">Literature</a></li>
-                <li><a href="#grammar">Grammar</a></li>
-                <li><a href="#resources">Resources</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>Master Class 10 English</h1>
-            <p>Your comprehensive companion for Literature, Grammar, and Writing Skills. Ace your board exams with curated summaries, practice papers, and quick revisions.</p>
-            <a href="#syllabus" class="btn">Start Learning</a>
-        </div>
-    </section>
-
-    <!-- Main Content Area -->
-    <main class="container" id="syllabus">
-        
-        <h2 class="section-title">Course Modules</h2>
-        
-        <!-- Core Feature Cards -->
-        <div class="grid">
-            <!-- Literature Card -->
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-tag">Prose & Poetry</span>
-                    <h3>First Flight & Footprints</h3>
-                    <p>Detailed chapter summaries, character sketches, and important question-answers line-by-line.</p>
-                    <a href="#study-tabs" class="btn" onclick="switchTab('lit')">Explore Chapters</a>
-                </div>
-            </div>
-
-            <!-- Grammar Card -->
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-tag">Language</span>
-                    <h3>Grammar & Syntax</h3>
-                    <p>Master Tenses, Modals, Subject-Verb Concord, and Reported Speech with clear rules and exercises.</p>
-                    <a href="#study-tabs" class="btn" onclick="switchTab('gram')">Study Grammar</a>
-                </div>
-            </div>
-
-            <!-- Writing Skills Card -->
-            <div class="card">
-                <div class="card-content">
-                    <span class="card-tag">Composition</span>
-                    <h3>Writing & Analytics</h3>
-                    <p>Learn the exact formats for Formal Letters and Analytical Paragraphs to secure full marks.</p>
-                    <a href="#study-tabs" class="btn" onclick="switchTab('write')">View Formats</a>
-                </div>
-            </div>
-        </div>
-
-        <h2 class="section-title" id="resources">Interactive Study Zone</h2>
-
-        <!-- Tabbed Content Section -->
-        <div class="study-box" id="study-tabs">
-            <div class="tabs">
-                <button class="tab-btn active" onclick="openTab(event, 'lit')">Literature Hub</button>
-                <button class="tab-btn" onclick="openTab(event, 'gram')">Grammar Essentials</button>
-                <button class="tab-btn" onclick="openTab(event, 'write')">Writing & Quiz</button>
-            </div>
-
-            <!-- Tab 1: Literature -->
-            <div id="lit" class="tab-content active">
-                <h3>First Flight (Prose)</h3>
-                <ul class="chapter-list">
-                    <li class="chapter-item">
-                        <div>
-                            <strong>Chapter 1: A Letter to God</strong>
-                            <p style="font-size: 0.85rem; color: #64748b;">Theme: Unshaken faith and human irony.</p>
-                        </div>
-                        <a href="#" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Notes</a>
-                    </li>
-                    <li class="chapter-item">
-                        <div>
-                            <strong>Chapter 2: Nelson Mandela: Long Walk to Freedom</strong>
-                            <p style="font-size: 0.85rem; color: #64748b;">Theme: Anti-apartheid movement and true liberty.</p>
-                        </div>
-                        <a href="#" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Notes</a>
-                    </li>
-                    <li class="chapter-item">
-                        <div>
-                            <strong>Poem 1: Dust of Snow</strong>
-                            <p style="font-size: 0.85rem; color: #64748b;">Theme: Healing power of nature.</p>
-                        </div>
-                        <a href="#" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Notes</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Tab 2: Grammar -->
-            <div id="gram" class="tab-content">
-                <h3>Key Board Concepts</h3>
-                <ul class="grammar-list">
-                    <li class="chapter-item">
-                        <div>
-                            <strong>Reported Speech</strong>
-                            <p style="font-size: 0.85rem; color: #64748b;">Rules for converting Direct to Indirect Speech (Commands, Requests, Statements).</p>
-                        </div>
-                        <a href="#" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Rules Chart</a>
-                    </li>
-                    <li class="chapter-item">
-                        <div>
-                            <strong>Subject-Verb Concord</strong>
-                            <p style="font-size: 0.85rem; color: #64748b;">Understanding singular and plural rules with exception cases.</p>
-                        </div>
-                        <a href="#" class="btn" style="padding: 0.4rem 0.8rem; font-size: 0.9rem;">Practice</a>
-                    </li>
-                </ul>
-            </div>
-
-            <!-- Tab 3: Writing & Quiz -->
-            <div id="write" class="tab-content">
-                <div class="quiz-container">
-                    <h3>Quick Check: Letter Writing Format</h3>
-                    <p style="margin: 0.5rem 0 1rem 0;">What comes directly after the Subject in a formal letter layout?</p>
-                    <form id="quizForm" onsubmit="checkAnswer(event)">
-                        <input type="radio" id="q1" name="quiz" value="wrong">
-                        <label for="q1"> Sender's Address</label><br style="margin-bottom: 0.5rem;">
-                        <input type="radio" id="q2" name="quiz" value="correct">
-                        <label for="q2"> Salutation (Sir/Madam)</label><br style="margin-bottom: 0.5rem;">
-                        <input type="radio" id="q3" name="quiz" value="wrong2">
-                        <label for="q3"> Date</label><br style="margin-bottom: 1rem;">
-                        <button type="submit" class="btn" style="padding: 0.5rem 1rem; font-size: 0.9rem; margin-top: 0.5rem;">Submit Answer</button>
-                    </form>
-                    <p id="quizResult" style="margin-top: 1rem; font-weight: bold;"></p>
-                </div>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 EduEnglish Hub. Designed for Class 10 Board Excellence.</p>
-    </footer>
-
-    <!-- Interactive Logic via JavaScript -->
-    <script>
-        function openTab(evt, tabName) {
-            var i, tabcontent, tablinks;
-            tabcontent = document.getElementsByClassName("tab-content");
-            for (i = 0; i < tabcontent.length; i++) {
-                tabcontent[i].style.display = "none";
-                tabcontent[i].classList.remove("active");
-            }
-            tablinks = document.getElementsByClassName("tab-btn");
-            for (i = 0; i < tablinks.length; i++) {
-                tablinks[i].className = tablinks[i].className.replace(" active", "");
-            }
-            document.getElementById(tabName).style.display = "block";
-            document.getElementById(tabName).classList.add("active");
-            evt.currentTarget.className += " active";
-        }
-
-        function switchTab(tabId) {
-            const event = { currentTarget: document.querySelector(`[onclick*="${tabId}"]`) };
-            openTab(event, tabId);
-        }
-
-        function checkAnswer(e) {
-            e.preventDefault();
-            const resultElement = document.getElementById('quizResult');
-            const selected = document.querySelector('input[name="quiz"]:checked');
-            
-            if (!selected) {
-                resultElement.innerText = "Please select an answer!";
-                resultElement.style.color = "orange";
-                return;
-            }
-            
-            if (selected.value === "correct") {
-                resultElement.innerText = "Correct! Salutation follows the Subject in standard CBSE layouts.";
-                resultElement.style.color = "green";
-            } else {
-                resultElement.innerText = "Incorrect. Try again! Hint: Think about how you greet the receiver.";
-                resultElement.style.color = "red";
-            }
-        }
-    </script>
+</div>
 </body>
 </html>
